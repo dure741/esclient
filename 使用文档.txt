@@ -1,0 +1,22 @@
+命令行客户端：
+	Usage: esclient [Host] [Index] [Encoding Method] [Filepath]
+	Host: elasticsearch 服务地址
+	Index: 要创建或者操作的索引
+	Encoding Method: 文档编码方式，在代码中只考虑了两种，UTF-8或GBK
+	Filepath: 需要解析的文档路径
+
+生成客户端:
+	go环境下，在main.go目录下
+	$go mod init [项目名]
+	初始化模块，生成go.mod和go.sum
+	$go mod tidy
+	下载依赖
+	$go build
+	生成二进制可执行文件
+
+注意:
+	如果当前目录不在需解析文档目录的话命令行的Filepath参数会影响es中
+	_doc的_id，因为字段中没有合适的可以用作_id的值
+	未考虑多线程
+	代码中内置了用于测试的Host Index Filepath，不影响使用，可修改删除
+	命令行参数不能少
